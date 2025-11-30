@@ -28,7 +28,7 @@ export default function RSVPForm() {
             <Heart className="w-6 h-6 text-primary" fill="currentColor" />
           </motion.div>
 
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Vui Lòng RSVP</h2>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Vui Lòng điền</h2>
           <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mb-6">
             Hãy cho chúng tôi biết bạn có thể tham dự được không. Chúng tôi sẽ rất vinh dự khi bạn chung vui cùng chúng tôi trong ngày đặc biệt này.
           </p>
