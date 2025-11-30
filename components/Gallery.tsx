@@ -7,49 +7,43 @@ import { ChevronDown, ChevronUp, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const galleryImages = [
+  { src: "https://static.wikia.nocookie.net/cuttherope/images/7/7d/Om_Nom-0.png", alt: "Om Nom happy" },
+  { src: "https://static.wikia.nocookie.net/cuttherope/images/2/2a/Om_Nelle.png", alt: "Om Nelle cute" },
   {
-    src: "/romantic-couple-engagement-photo-garden.jpg",
-    alt: "Engagement photo in garden",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/8/8f/Om_Nelle%E2%80%99s_appearance_in_Omzilla.jpg",
+    alt: "Om Nom and Om Nelle together",
   },
   {
-    src: "/couple-laughing-candid-romantic-sunset.jpg",
-    alt: "Candid laughing moment",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/b/b2/Om_Nelle%E2%80%99s_appearance_in_Scrapbooking..jpg",
+    alt: "Om Nom giving card to Om Nelle",
   },
   {
-    src: "/elegant-couple-formal-portrait-romantic.jpg",
-    alt: "Formal portrait",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/2/2e/Om_Nelle%E2%80%99s_appearance_in_Waiter.jpg",
+    alt: "Om Nom as waiter for Om Nelle",
   },
   {
-    src: "/couple-holding-hands-romantic-close-up.jpg",
-    alt: "Holding hands close-up",
-  },
-  {
-    src: "/romantic-couple-beach-sunset-silhouette.jpg",
-    alt: "Beach sunset silhouette",
-  },
-  {
-    src: "/couple-dancing-romantic-soft-lighting.jpg",
-    alt: "Dancing together",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/0/0c/Om_Nelle%E2%80%99s_appearance_in_Cooking_Time.jpg",
+    alt: "Om Nom cooking for Om Nelle",
   },
   // Hidden images (shown when expanded)
   {
-    src: "/couple-picnic-romantic-park.jpg",
-    alt: "Romantic picnic",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/4/49/Om_Nelle%E2%80%99s_appearance_in_Engineer.jpg",
+    alt: "Om Nom building for Om Nelle",
     hidden: true,
   },
   {
-    src: "/couple-coffee-shop-date-romantic.jpg",
-    alt: "Coffee shop date",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/d/d0/Om_Nelle%E2%80%99s_appearance_in_Santa.jpg",
+    alt: "Om Nom and Om Nelle Christmas",
     hidden: true,
   },
   {
-    src: "/couple-hiking-adventure-mountain-romantic.jpg",
-    alt: "Adventure hiking",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/1/17/Om_Nelle%E2%80%99s_appearance_in_season_5.jpg",
+    alt: "Om Nom and Om Nelle at fair",
     hidden: true,
   },
   {
-    src: "/couple-cooking-together-kitchen-romantic.jpg",
-    alt: "Cooking together",
+    src: "https://static.wikia.nocookie.net/cuttherope/images/d/dd/Om_Nelle%E2%80%99s_appearance_at_Easter..jpg",
+    alt: "Om Nom and Om Nelle Easter",
     hidden: true,
   },
 ]
@@ -71,13 +65,13 @@ export default function Gallery() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Our Story</h2>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Our Sweet Story</h2>
           <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
-            A glimpse into our journey together
+            A glimpse into our candy-filled journey together
           </p>
         </motion.div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - 2 cols mobile, 3-4 cols desktop */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           <AnimatePresence mode="popLayout">
             {visibleImages.map((image, index) => (
@@ -89,7 +83,7 @@ export default function Gallery() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative aspect-square rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group shimmer-border"
+                className="relative aspect-square rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group shimmer-border bg-gradient-to-br from-green-50 to-blue-50"
                 onClick={() => setSelectedImage(index)}
               >
                 <Image
@@ -99,6 +93,7 @@ export default function Gallery() {
                   className="object-cover transition-transform duration-500 md:group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   loading="lazy"
+                  unoptimized
                 />
                 {/* Hover overlay - desktop only */}
                 <div className="absolute inset-0 bg-primary/0 md:group-hover:bg-primary/10 transition-colors duration-300" />
@@ -144,15 +139,16 @@ export default function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative max-w-3xl max-h-[80vh] w-full aspect-square rounded-3xl overflow-hidden"
+              className="relative max-w-3xl max-h-[80vh] w-full aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-green-50 to-blue-50"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
                 src={visibleImages[selectedImage]?.src || ""}
                 alt={visibleImages[selectedImage]?.alt || ""}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="90vw"
+                unoptimized
               />
               <button
                 onClick={() => setSelectedImage(null)}

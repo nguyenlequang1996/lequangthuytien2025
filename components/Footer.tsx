@@ -20,10 +20,13 @@ export default function Footer() {
           <div className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-primary/40" />
         </div>
 
-        {/* Message */}
         <p className="font-serif text-xl md:text-2xl text-foreground mb-2">We can{"'"}t wait to celebrate with you!</p>
-        <p className="text-muted-foreground text-sm md:text-base mb-6">With love,</p>
-        <p className="font-serif text-2xl md:text-3xl text-foreground">Emma & James</p>
+        <p className="text-muted-foreground text-sm md:text-base mb-6">With love and candy,</p>
+        <p className="font-serif text-2xl md:text-3xl">
+          <span className="text-green-600">Om Nom</span>
+          <span className="text-primary mx-2">&</span>
+          <span className="text-blue-500">Om Nelle</span>
+        </p>
 
         {/* Hashtag */}
         <motion.div
@@ -34,11 +37,11 @@ export default function Footer() {
           className="mt-8 pt-8 border-t border-border/50"
         >
           <p className="text-muted-foreground text-sm tracking-wider">Share your photos with us</p>
-          <p className="font-serif text-lg md:text-xl text-primary mt-1">#EmmaAndJames2025</p>
+          <p className="font-serif text-lg md:text-xl text-primary mt-1">#OmNomAndOmNelle2025</p>
         </motion.div>
 
         {/* Copyright */}
-        <p className="text-xs text-muted-foreground/60 mt-8">© 2025 Emma & James Wedding</p>
+        <p className="text-xs text-muted-foreground/60 mt-8">© 2025 Om Nom & Om Nelle Wedding • Cut the Rope</p>
       </motion.div>
     </footer>
   )
