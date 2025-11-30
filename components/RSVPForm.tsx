@@ -41,7 +41,7 @@ export default function RSVPForm() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Hà Nội, Việt Nam</span>
+              <span>Tây Ninh, Việt Nam</span>
             </div>
           </div>
         </motion.div>
