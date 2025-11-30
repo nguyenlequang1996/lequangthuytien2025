@@ -1,6 +1,14 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import { Noto_Serif } from 'next/font/google'
 import './globals.css'
+
+const notoSerif = Noto_Serif({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '600', '700'],
+  variable: '--font-noto-serif',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Wedding Invitation - Quang & Thuy Tien',
@@ -32,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body className={`${notoSerif.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>

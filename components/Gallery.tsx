@@ -129,10 +129,9 @@ export default function Gallery() {
           >
             <button
               onClick={() => setDisplayCount(galleryImages.length)}
-              className="px-8 py-3 text-center text-foreground font-serif text-lg md:text-xl hover:text-primary transition-colors duration-300 relative group"
+              className="bg-transparent border-none p-0 m-0 text-xs tracking-wider mb-2 text-muted-foreground/60 cursor-pointer focus:outline-none"
             >
-              Xem Thêm
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+              Xem thêm
             </button>
           </motion.div>
         )}
