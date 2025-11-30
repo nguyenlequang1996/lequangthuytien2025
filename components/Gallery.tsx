@@ -81,9 +81,9 @@ const INITIAL_SHOW = 6
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [showAll, setShowAll] = useState(false)
-  const [randomImages, setRandomImages] = useState(galleryImages.slice(0, INITIAL_SHOW))
+  const [shuffledImages, setShuffledImages] = useState(galleryImages)
   
-  // Xáo trộn ảnh chỉ ở client-side để tránh hydration mismatch
+  // Xáo trộn toàn bộ mảng ảnh chỉ ở client-side để tránh hydration mismatch
   useEffect(() => {
     const arr = [...galleryImages]
     for (let i = arr.length - 1; i > 0; i--) {
@@ -92,10 +92,10 @@ export default function Gallery() {
       arr[i] = arr[j]
       arr[j] = temp
     }
-    setRandomImages(arr.slice(0, INITIAL_SHOW))
+    setShuffledImages(arr)
   }, [])
   
-  const displayedImages = showAll ? galleryImages : randomImages
+  const displayedImages = showAll ? shuffledImages : shuffledImages.slice(0, INITIAL_SHOW)
 
   return (
     <section className="w-full">
@@ -131,7 +131,7 @@ export default function Gallery() {
                 fill
                 className="object-cover transition-opacity duration-300"
                 sizes="(max-width: 768px) 100vw, 100vw"
-                loading={index < 3 ? "eager" : "lazy"}
+                loading={index < 6 ? "eager" : "lazy"}
                 quality={85}
               />
             </motion.div>
