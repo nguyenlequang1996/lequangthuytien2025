@@ -23,7 +23,7 @@ export default function Footer() {
         {/* Message */}
         <p className="font-serif text-xl md:text-2xl text-foreground mb-2">We can{"'"}t wait to celebrate with you!</p>
         <p className="text-muted-foreground text-sm md:text-base mb-6">With love,</p>
-        <p className="font-serif text-2xl md:text-3xl text-foreground">Emma & James</p>
+        <p className="font-serif text-2xl md:text-3xl text-foreground">Lê Quang & Thủy Tiên</p>
 
         {/* Hashtag */}
         <motion.div
@@ -34,11 +34,11 @@ export default function Footer() {
           className="mt-8 pt-8 border-t border-border/50"
         >
           <p className="text-muted-foreground text-sm tracking-wider">Share your photos with us</p>
-          <p className="font-serif text-lg md:text-xl text-primary mt-1">#EmmaAndJames2025</p>
+          <p className="font-serif text-lg md:text-xl text-primary mt-1">#LeQuangAndThuyTien2025</p>
         </motion.div>
 
         {/* Copyright */}
-        <p className="text-xs text-muted-foreground/60 mt-8">© 2025 Emma & James Wedding</p>
+        <p className="text-xs text-muted-foreground/60 mt-8">© 2025 Lê Quang & Thủy Tiên Wedding</p>
       </motion.div>
     </footer>
   )

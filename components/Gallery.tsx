@@ -1,169 +1,184 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
-import { ChevronDown, ChevronUp, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { X } from "lucide-react"
 
 const galleryImages = [
   {
-    src: "/romantic-couple-engagement-photo-garden.jpg",
-    alt: "Engagement photo in garden",
+    src: "/1.webp",
+    alt: "Gallery image 1",
   },
   {
-    src: "/couple-laughing-candid-romantic-sunset.jpg",
-    alt: "Candid laughing moment",
+    src: "/2.webp",
+    alt: "Gallery image 2",
   },
   {
-    src: "/elegant-couple-formal-portrait-romantic.jpg",
-    alt: "Formal portrait",
+    src: "/3.webp",
+    alt: "Gallery image 3",
   },
   {
-    src: "/couple-holding-hands-romantic-close-up.jpg",
-    alt: "Holding hands close-up",
+    src: "/4.webp",
+    alt: "Gallery image 4",
   },
   {
-    src: "/romantic-couple-beach-sunset-silhouette.jpg",
-    alt: "Beach sunset silhouette",
+    src: "/5.webp",
+    alt: "Gallery image 5",
   },
   {
-    src: "/couple-dancing-romantic-soft-lighting.jpg",
-    alt: "Dancing together",
-  },
-  // Hidden images (shown when expanded)
-  {
-    src: "/couple-picnic-romantic-park.jpg",
-    alt: "Romantic picnic",
-    hidden: true,
+    src: "/6.webp",
+    alt: "Gallery image 6",
   },
   {
-    src: "/couple-coffee-shop-date-romantic.jpg",
-    alt: "Coffee shop date",
-    hidden: true,
+    src: "/7.webp",
+    alt: "Gallery image 7",
   },
   {
-    src: "/couple-hiking-adventure-mountain-romantic.jpg",
-    alt: "Adventure hiking",
-    hidden: true,
+    src: "/8.webp",
+    alt: "Gallery image 8",
   },
   {
-    src: "/couple-cooking-together-kitchen-romantic.jpg",
-    alt: "Cooking together",
-    hidden: true,
+    src: "/9.webp",
+    alt: "Gallery image 9",
+  },
+  {
+    src: "/10.webp",
+    alt: "Gallery image 10",
+  },
+  {
+    src: "/11.webp",
+    alt: "Gallery image 11",
+  },
+  {
+    src: "/12.webp",
+    alt: "Gallery image 12",
+  },
+  {
+    src: "/13.webp",
+    alt: "Gallery image 13",
+  },
+  {
+    src: "/14.webp",
+    alt: "Gallery image 14",
+  },
+  {
+    src: "/15.webp",
+    alt: "Gallery image 15",
   },
 ]
 
-export default function Gallery() {
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+const INITIAL_SHOW = 6
 
-  const visibleImages = isExpanded ? galleryImages : galleryImages.filter((img) => !img.hidden)
+export default function Gallery() {
+  const [displayCount, setDisplayCount] = useState(INITIAL_SHOW)
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const displayedImages = galleryImages.slice(0, displayCount)
+  const hasMore = displayCount < galleryImages.length
 
   return (
-    <section className="py-12 md:py-16 px-4">
-      <div className="max-w-5xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
-        >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Our Story</h2>
-          <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
-            A glimpse into our journey together
-          </p>
-        </motion.div>
+    <section className="w-full">
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12 py-12 md:py-16 px-4"
+      >
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Câu Chuyện Của Chúng Tôi</h2>
+        <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
+          Những khoảnh khắc đáng nhớ trong hành trình của chúng tôi
+        </p>
+      </motion.div>
 
+      <div className="w-full">
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-          <AnimatePresence mode="popLayout">
-            {visibleImages.map((image, index) => (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="relative aspect-square rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group shimmer-border"
-                onClick={() => setSelectedImage(index)}
-              >
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 md:group-hover:scale-110"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  loading="lazy"
-                />
-                {/* Hover overlay - desktop only */}
-                <div className="absolute inset-0 bg-primary/0 md:group-hover:bg-primary/10 transition-colors duration-300" />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+        <div className="grid grid-cols-1 gap-0">
+          {displayedImages.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              onClick={() => setSelectedImage(index)}
+              className="relative w-full aspect-video overflow-hidden cursor-pointer group"
+            >
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={image.alt}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 100vw"
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-all duration-300" />
+            </motion.div>
+          ))}
         </div>
 
-        {/* Expand/Collapse Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-6"
-        >
-          <Button
-            variant="ghost"
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="group text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-full px-6"
+        {/* Show More Button */}
+        {hasMore && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex justify-center mt-8 px-4"
           >
-            <span className="mr-2">{isExpanded ? "Show Less" : "View More Photos"}</span>
-            {isExpanded ? (
-              <ChevronUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
-            ) : (
-              <ChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-            )}
-          </Button>
-        </motion.div>
+            <button
+              onClick={() => setDisplayCount(galleryImages.length)}
+              className="px-8 py-3 text-center text-foreground font-serif text-lg md:text-xl hover:text-primary transition-colors duration-300 relative group"
+            >
+              Xem Thêm
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* Lightbox Modal */}
-      <AnimatePresence>
-        {selectedImage !== null && (
+      {selectedImage !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/95 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/90 p-4"
-            onClick={() => setSelectedImage(null)}
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative max-w-4xl max-h-[90vh] w-full aspect-square md:aspect-auto rounded-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative max-w-3xl max-h-[80vh] w-full aspect-square rounded-3xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+            <Image
+              src={galleryImages[selectedImage].src || ""}
+              alt={galleryImages[selectedImage].alt || ""}
+              fill
+              className="object-contain"
+              sizes="95vw"
+            />
+
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 p-2 bg-background/80 rounded-full text-foreground hover:bg-background transition-colors z-10"
+              aria-label="Close lightbox"
             >
-              <Image
-                src={visibleImages[selectedImage]?.src || ""}
-                alt={visibleImages[selectedImage]?.alt || ""}
-                fill
-                className="object-cover"
-                sizes="90vw"
-              />
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 p-2 bg-background/80 rounded-full text-foreground hover:bg-background transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </motion.div>
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-background/80 rounded-full text-sm text-foreground">
+              {selectedImage + 1} / {galleryImages.length}
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      )}
     </section>
   )
 }

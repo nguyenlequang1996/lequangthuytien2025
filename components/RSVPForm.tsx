@@ -5,7 +5,7 @@ import { Heart, Calendar, MapPin } from "lucide-react"
 
 export default function RSVPForm() {
   // Replace this with your actual Google Form embed URL
-  const googleFormUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+  const googleFormUrl = "https://forms.gle/wMELw3vqcXTyV6QX9"
 
   return (
     <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-transparent via-card/50 to-card/80">
@@ -28,20 +28,20 @@ export default function RSVPForm() {
             <Heart className="w-6 h-6 text-primary" fill="currentColor" />
           </motion.div>
 
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Join Our Celebration</h2>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Vui Lòng RSVP</h2>
           <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mb-6">
-            Please let us know if you can make it. We would be honored to have you share this special day with us.
+            Hãy cho chúng tôi biết bạn có thể tham dự được không. Chúng tôi sẽ rất vinh dự khi bạn chung vui cùng chúng tôi trong ngày đặc biệt này.
           </p>
 
           {/* Event Details Summary */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 text-primary" />
-              <span>June 15th, 2025</span>
+              <span>14 Tháng 12, 2025</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Napa Valley, CA</span>
+              <span>Hà Nội, Việt Nam</span>
             </div>
           </div>
         </motion.div>
@@ -55,7 +55,7 @@ export default function RSVPForm() {
           className="bg-background rounded-3xl shadow-lg overflow-hidden border border-border/50"
         >
           <div className="p-4 md:p-6 bg-secondary/30 border-b border-border/50">
-            <h3 className="font-serif text-lg md:text-xl text-foreground text-center">RSVP Form</h3>
+            <h3 className="font-serif text-lg md:text-xl text-foreground text-center">Biểu Mẫu RSVP</h3>
           </div>
 
           {/* Responsive iframe container */}
