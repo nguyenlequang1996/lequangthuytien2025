@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { X } from "lucide-react"
@@ -9,34 +9,42 @@ const galleryImages = [
   {
     src: "/1.webp",
     alt: "Gallery image 1",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/2.webp",
     alt: "Gallery image 2",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/3.webp",
     alt: "Gallery image 3",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/4.webp",
     alt: "Gallery image 4",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/5.webp",
     alt: "Gallery image 5",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/6.webp",
     alt: "Gallery image 6",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/7.webp",
     alt: "Gallery image 7",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/8.webp",
     alt: "Gallery image 8",
+    blurDataURL: "/placeholder.svg",
   },
   {
     src: "/9.webp",
@@ -71,10 +79,23 @@ const galleryImages = [
 const INITIAL_SHOW = 6
 
 export default function Gallery() {
-  const [displayCount, setDisplayCount] = useState(INITIAL_SHOW)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const displayedImages = galleryImages.slice(0, displayCount)
-  const hasMore = displayCount < galleryImages.length
+  const [showAll, setShowAll] = useState(false)
+  const [randomImages, setRandomImages] = useState(galleryImages.slice(0, INITIAL_SHOW))
+  
+  // Xáo trộn ảnh chỉ ở client-side để tránh hydration mismatch
+  useEffect(() => {
+    const arr = [...galleryImages]
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j: number = Math.floor(Math.random() * (i + 1))
+      const temp = arr[i]
+      arr[i] = arr[j]
+      arr[j] = temp
+    }
+    setRandomImages(arr.slice(0, INITIAL_SHOW))
+  }, [])
+  
+  const displayedImages = showAll ? galleryImages : randomImages
 
   return (
     <section className="w-full">
@@ -92,48 +113,40 @@ export default function Gallery() {
         </p>
       </motion.div>
 
-      <div className="w-full">
+      <div className="w-full px-[5px] md:px-12 lg:px-32 xl:px-48">
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 gap-0">
+        <div className="grid grid-cols-1 gap-[5px]">
           {displayedImages.map((image, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              onClick={() => setSelectedImage(index)}
-              className="relative w-full aspect-video overflow-hidden cursor-pointer group"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative w-full aspect-video overflow-hidden bg-secondary/20"
             >
               <Image
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                className="object-cover transition-opacity duration-300"
                 sizes="(max-width: 768px) 100vw, 100vw"
+                loading={index < 3 ? "eager" : "lazy"}
+                quality={85}
               />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-all duration-300" />
             </motion.div>
           ))}
         </div>
-
-        {/* Show More Button */}
-        {hasMore && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="flex justify-center mt-8 px-4"
-          >
+        {/* Nút xem thêm */}
+        {!showAll && (
+          <div className="flex justify-center mt-8 px-4">
             <button
-              onClick={() => setDisplayCount(galleryImages.length)}
+              onClick={() => setShowAll(true)}
               className="bg-transparent border-none p-0 m-0 text-xs tracking-wider mb-2 text-muted-foreground/60 cursor-pointer focus:outline-none"
             >
               Xem thêm
             </button>
-          </motion.div>
+          </div>
         )}
       </div>
 

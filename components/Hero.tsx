@@ -105,7 +105,7 @@ export default function Hero() {
             Lúc 10 Giờ Sáng
           </p>
           <p className="text-muted-foreground text-sm md:text-base tracking-wider mt-4">
-            Hà Nội, Việt Nam
+            Tây Ninh, Việt Nam
           </p>
         </motion.div>
 
