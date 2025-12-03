@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Heart } from "lucide-react"
+import { useEffect, useRef } from "react"
 
 export default function Hero() {
   return (
@@ -29,104 +30,88 @@ export default function Hero() {
 
       {/* Content container */}
       <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto text-center">
-        {/* Preheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        {/* Save the Date Typography */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-muted-foreground text-sm md:text-base tracking-[0.3em] uppercase mb-6"
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="mb-6 relative"
         >
-          Cùng với gia đình hai bên
-        </motion.p>
+          <motion.h5
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            }}
+            className="text-2xl md:text-4xl lg:text-5xl text-primary/90 italic font-light tracking-wider save-the-date-text"
+            style={{ fontStyle: 'italic', fontSize: '60px' }}
+          >
+            Save the Date
+          </motion.h5>
+          <div className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        </motion.div>
 
         {/* Couple Photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="floating relative mb-8"
+          transition={{ duration: 1, delay: 0.3 }}
+          className="floating relative mb-10"
         >
-          <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent z-10 pointer-events-none" />
+          <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-8 border-white/80 shadow-2xl romantic-photo">
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-200/20 via-transparent to-rose-200/20 z-10 pointer-events-none" />
             <Image
-              src="/DSC08193.webp"
-              alt="Emma and James"
+              src="/Hero.webp"
+              alt="Lê Quang & Thủy Tiên"
               fill
-              className="object-cover object-top scale-200" 
+              className="object-cover object-top scale-120"
               style={{ objectPosition: "55% 30%" }}
               priority
-              sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 288px"
+              sizes="(max-width: 768px) 224px, (max-width: 1024px) 288px, 320px"
             />
           </div>
-          {/* Rose gold glow behind photo */}
-          <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl -z-10 scale-110" />
+          {/* Romantic glow behind photo */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-300/30 via-rose-300/30 to-primary/30 blur-3xl -z-10 scale-125" />
+          {/* Decorative hearts around photo */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            className="absolute inset-0"
+          >
+            <Heart className="absolute -top-4 left-1/4 w-6 h-6 text-pink-300 fill-pink-300" />
+            <Heart className="absolute -top-2 right-1/4 w-4 h-4 text-rose-300 fill-rose-300" />
+            <Heart className="absolute bottom-0 left-1/3 w-5 h-5 text-red-300 fill-red-300" />
+          </motion.div>
         </motion.div>
 
         {/* Couple Names */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-4"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mb-6"
         >
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-foreground rose-gold-glow">
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mb-2">
             Lê Quang
           </h1>
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="inline-block font-serif text-3xl md:text-4xl text-primary my-2 md:my-4"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="inline-flex items-center justify-center my-3 md:my-5"
           >
-            &
-          </motion.span>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-foreground rose-gold-glow">
+            <Heart className="w-8 h-8 md:w-12 md:h-12 text-rose-400 fill-rose-400 mx-2 romantic-heart" />
+          </motion.div>
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mt-2">
             Thủy Tiên
           </h1>
         </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent my-6"
-        />
-
-        {/* Date and Location */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="space-y-2"
-        >
-          <p className="font-serif text-xl md:text-2xl lg:text-3xl text-foreground/90">Chủ Nhật, 14 Tháng 12, 2025</p>
-          <p className="text-muted-foreground text-sm md:text-base tracking-wider">
-            Lúc 10 Giờ Sáng
-          </p>
-          <p className="text-muted-foreground text-sm md:text-base tracking-wider mt-4">
-            Tây Ninh, Việt Nam
-          </p>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-          className="mt-12 md:mt-16"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-            className="flex flex-col items-center text-muted-foreground/60"
-          >
-            <span className="text-xs tracking-wider mb-2">Cuộn</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </motion.div>
-        </motion.div>
+        <div className="text-2xl md:text-3xl text-primary font-bold mb-2">
+          January 10, 2026
+        </div>
       </div>
     </section>
   )

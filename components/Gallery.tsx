@@ -76,7 +76,7 @@ const galleryImages = [
   },
 ]
 
-const INITIAL_SHOW = 6
+const INITIAL_SHOW = 5
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
@@ -105,11 +105,10 @@ export default function Gallery() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-12 py-12 md:py-16 px-4"
+        className="text-center mb-3 py-3 md:py-8 px-4"
       >
-        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-3">Câu Chuyện Của Chúng Tôi</h2>
-        <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto">
-          Những khoảnh khắc đáng nhớ trong hành trình của chúng tôi
+        <p className="text-muted-foreground text-lg md:text-3xl mx-auto">
+          Cùng chúng mình nhìn lại những khoảnh khắc đáng nhớ đã qua trong bộ ảnh cưới này nhé!
         </p>
       </motion.div>
 
@@ -124,14 +123,14 @@ export default function Gallery() {
               viewport={{ once: true, margin: "100px" }}
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="relative w-full aspect-video overflow-hidden bg-secondary/20"
-            >
+            > 
               <Image
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
                 className="object-cover transition-opacity duration-300"
                 sizes="(max-width: 768px) 100vw, 100vw"
-                loading={index < 6 ? "eager" : "lazy"}
+                loading={index < INITIAL_SHOW ? "eager" : "lazy"}
                 quality={85}
               />
             </motion.div>
@@ -142,7 +141,7 @@ export default function Gallery() {
           <div className="flex justify-center mt-8 px-4">
             <button
               onClick={() => setShowAll(true)}
-              className="bg-transparent border-none p-0 m-0 text-xs tracking-wider mb-2 text-muted-foreground/60 cursor-pointer focus:outline-none"
+              className="bg-transparent border-none p-0 m-0 text-base md:text-lg tracking-wider mb-2 text-muted-foreground cursor-pointer focus:outline-none hover:text-primary transition-colors animate-bounce"
             >
               Xem thêm
             </button>

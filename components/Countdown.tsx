@@ -23,7 +23,7 @@ export default function Countdown() {
     setMounted(true)
 
     const calculateTimeLeft = () => {
-      const targetDate = new Date("2025-12-14").getTime()
+      const targetDate = new Date("2026-01-10T18:00:00").getTime()
       const now = new Date().getTime()
       const difference = targetDate - now
 
@@ -96,7 +96,7 @@ export default function Countdown() {
 
         {/* Target Date */}
         <p className="mt-8 text-primary font-serif text-lg md:text-xl">
-          14 Tháng 12, 2025
+          10 Tháng 1, 2026
         </p>
       </div>
     </section>
