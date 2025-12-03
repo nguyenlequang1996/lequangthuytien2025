@@ -63,10 +63,6 @@ const galleryImages = [
     alt: "Gallery image 12",
   },
   {
-    src: "/13.webp",
-    alt: "Gallery image 13",
-  },
-  {
     src: "/14.webp",
     alt: "Gallery image 14",
   },

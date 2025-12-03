@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Heart } from "lucide-react"
-import { useEffect, useRef } from "react"
 
 export default function Hero() {
   return (

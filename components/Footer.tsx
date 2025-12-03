@@ -36,9 +36,6 @@ export default function Footer() {
           <p className="text-muted-foreground text-sm tracking-wider">Share your photos with us</p>
           <p className="font-serif text-lg md:text-xl text-primary mt-1">#LeQuangAndThuyTien2025</p>
         </motion.div>
-
-        {/* Copyright */}
-        <p className="text-xs text-muted-foreground/60 mt-8">© 2025 Lê Quang & Thủy Tiên Wedding</p>
       </motion.div>
     </footer>
   )
