@@ -8,6 +8,12 @@ export default function RSVPForm() {
 
   return (
     <section className="py-6 md:py-8 px-4 bg-gradient-to-b from-transparent via-card/50 to-card/80">
+              <div className="flex items-center justify-center gap-2">
+          <span className="text-sm md:text-xl text-muted-foreground mt-2">Trong trường hợp khẩn cấp có thể liên hệ qua SĐT:</span>
+        </div>
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <span className="text-sm md:text-xl text-muted-foreground mt-2">0367634325 (Quang) hoặc 0922657655 (Tiên)</span>
+        </div>
       <div className="max-w-3xl mx-auto">
         {/* Google Form Container */}
         <motion.div

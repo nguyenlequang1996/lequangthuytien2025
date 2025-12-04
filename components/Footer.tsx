@@ -5,7 +5,7 @@ import { Heart } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="py-12 px-4 bg-gradient-to-b from-card/80 to-secondary/30">
+    <footer className="py-6 px-4 bg-gradient-to-b from-card/80 to-secondary/30">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

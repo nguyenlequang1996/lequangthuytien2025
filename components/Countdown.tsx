@@ -74,7 +74,7 @@ export default function Countdown() {
     </div>
   )
   return (
-    <section className="py-12 md:py-16 px-4 bg-gradient-to-b from-secondary/5 to-secondary/20">
+    <section className="py-6 md:py-16 px-4 bg-gradient-to-b from-secondary/5 to-secondary/20">
       <div className="max-w-3xl mx-auto text-center">
         {/* Header */}
         <div className="mb-10">

@@ -93,7 +93,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mb-6"
         >
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mb-2">
+          <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mb-2">
             Lê Quang
           </h1>
           <motion.div
@@ -104,13 +104,24 @@ export default function Hero() {
           >
             <Heart className="w-8 h-8 md:w-12 md:h-12 text-rose-400 fill-rose-400 mx-2 romantic-heart" />
           </motion.div>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mt-2">
+          <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-semibold text-foreground romantic-text mt-2">
             Thủy Tiên
           </h1>
         </motion.div>
-        <div className="text-2xl md:text-3xl text-primary font-bold mb-2">
+        <motion.h5
+          animate={{
+            y: [0, -5, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut"
+          }}
+          className="text-2xl md:text-4xl lg:text-5xl text-primary/90 mt-8 italic font-light tracking-wider save-the-date-text"
+          style={{ fontStyle: 'italic', fontSize: '35px' }}
+        >
           January 10, 2026
-        </div>
+        </motion.h5>
       </div>
     </section>
   )
