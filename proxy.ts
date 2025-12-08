@@ -14,10 +14,14 @@ export function proxy(request: NextRequest) {
   }
 
   if (mutated) {
-    return NextResponse.redirect(url, { status: 301 })
+    const res = NextResponse.redirect(url, { status: 301 })
+    res.headers.set("X-Frame-Options", "DENY")
+    return res
   }
 
-  return NextResponse.next()
+  const res = NextResponse.next()
+  res.headers.set("X-Frame-Options", "DENY")
+  return res
 }
 
 export const config = {
