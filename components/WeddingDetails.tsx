@@ -36,7 +36,7 @@ export default function WeddingDetails() {
             Sau 6 năm cùng nhau đi qua bao kỷ niệm, chúng mình <span className="text-primary" style={{ fontWeight: 'bold' }}>Lê Quang & Thủy Tiên</span> – đã quyết định
             viết nên chương mới của câu chuyện tình yêu này, với sự chúc phúc và đồng thuận của
             hai bên gia đình. Chúng mình vô cùng hạnh phúc khi được gửi đến cả nhà tấm thiệp mời
-            đặc biệt này, nơi cả nhà có thể cùng chia sẻ niềm vui, xem lại những hình ảnh kỷ niệm,
+            đặc biệt này, nơi cả nhà có thể cùng chia sẻ niềm vui
             và cùng chứng kiến khoảnh khắc thiêng liêng trong lễ thành hôn của chúng mình.
           </div>
         </motion.div>
@@ -59,7 +59,7 @@ export default function WeddingDetails() {
               className="text-center"
             >
               <div className="text-lg md:text-xl text-foreground font-semibold">Chú Rể</div>
-              <div className="text-xl md:text-4xl text-muted-foreground text-primary" style={{ paddingBottom: '15px' }}>Nguyễn Lê Quang</div>
+              <div className="text-xl md:text-4xl text-muted-foreground text-primary" style={{ fontWeight: 'bold', paddingBottom: '15px' }}>Nguyễn Lê Quang</div>
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg bg-secondary/20 mb-4 max-w-sm mx-auto">
                 <Image
                   src="/LeQuang.webp"
@@ -73,7 +73,7 @@ export default function WeddingDetails() {
               <div className="mb-2 min-h-[40px] flex flex-col justify-start">
                 <div className="text-sm md:text-2xl text-foreground mb-1">Ông Nguyễn Văn Vinh</div>
                 <div className="text-sm md:text-2xl text-foreground mb-1">Bà Lê Thị Lệ Khánh</div>
-                <div className="text-sm md:text-2xl text-muted-foreground mt-3">Diên Khánh, Tỉnh Khánh Hòa</div>
+                <div className="text-sm md:text-2xl text-muted-foreground mt-3">Diên Khánh, Khánh Hòa</div>
               </div>
 
 
@@ -88,7 +88,7 @@ export default function WeddingDetails() {
               className="text-center"
             >
               <div className="text-lg md:text-xl text-foreground font-semibold">Cô Dâu</div>
-              <div className="text-xl md:text-4xl text-muted-foreground text-primary" style={{ paddingBottom: '15px' }}>Đặng Thị Thủy Tiên</div>
+              <div className="text-xl md:text-4xl text-muted-foreground text-primary" style={{ fontWeight: 'bold', paddingBottom: '15px' }}>Đặng Thị Thủy Tiên</div>
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg bg-secondary/20 mb-4 max-w-sm mx-auto">
                 <Image
                   src="/ThuyTien.webp"
@@ -102,7 +102,7 @@ export default function WeddingDetails() {
               <div className="mb-2 min-h-[40px] flex flex-col justify-start">
                 <div className="text-sm md:text-2xl text-foreground mb-1">Ông Đặng Thanh Tùng</div>
                 <div className="text-sm md:text-2xl text-foreground mb-1">Bà Nguyễn Thị Kiều Chương</div>
-                <div className="text-sm md:text-2xl text-muted-foreground mt-3">Trảng Bàng, Tỉnh Tây Ninh</div>
+                <div className="text-sm md:text-2xl text-muted-foreground mt-3">Trảng Bàng, Tây Ninh</div>
               </div>
             </motion.div>
           </div>
@@ -124,7 +124,11 @@ export default function WeddingDetails() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mb-12"
         >
-          <div className="text-sm text-muted-foreground mb-3 uppercase tracking-widest">Hôn Lễ Được Cử Hành Tại</div>
+          <div className="mb-6">
+            <div className="text-sm text-muted-foreground mb-3 uppercase tracking-widest">Hôn Lễ Được Cử Hành Tại Tư Gia</div>
+            <div className="text-xl md:text-3xl text-primary font-bold mb-4">Vào lúc 9:00 ngày 10 Tháng 1 năm 2026</div>
+          </div>
+          <div className="text-lg text-muted-foreground mb-2">Trân trọng kính mời mọi người đến dự buổi tiệc chung vui cùng chúng mình tại</div>
           <div className="text-2xl md:text-3xl text-primary font-bold mb-4">Trung Tâm Hội Nghị - Tiệc Cưới Phúc Thịnh An </div>
 
           {/* Date */}

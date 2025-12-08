@@ -26,8 +26,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: 'Quang & Tiên Wedding',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  description: 'Quang & Tiên Wedding',
+  generator: '',
   icons: {
     icon: '/iconpage.png',
     apple: '/iconpage.png',
